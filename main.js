@@ -68,8 +68,28 @@ btn.addEventListener("click", () => {
     })
         .then((response) => response.json())
         .then((data) => {
+            imageName.value = '';
+            imageUrl.value = '';
             text.textContent = `The image (${data.name}) is added successfully`;
             text.style.color = "black";
+
+            let div = document.createElement("div");
+            let iname = document.createElement("p");
+            let image = document.createElement("img");
+            let deleteButton = document.createElement("button");
+
+            div.classList.add("box");
+            image.classList.add("image");
+            deleteButton.classList.add("delButton");
+
+            iname.textContent = nameValue;
+            image.src = imageValue;
+            deleteButton.textContent = "DELETE";
+
+            div.appendChild(iname);
+            div.appendChild(image);
+            div.appendChild(deleteButton);
+            container.appendChild(div);
         });
 });
 
